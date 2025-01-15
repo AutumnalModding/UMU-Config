@@ -48,7 +48,7 @@ public final class ConfigManager {
 		streamCommon().forEach(ConfigFileManager::saveFrom);
 	}
 
-	@Environment(CLIENT)
+
 	@Internal
 	public static void initializeClient() {
 		List<EntrypointContainer<IConfigProvider>> modConfigs = FabricLoader.getInstance().getEntrypointContainers("umu-config-client", IConfigProvider.class);
@@ -87,13 +87,12 @@ public final class ConfigManager {
 		ServerPlayNetworking.send(player, CHANNEL_SYNC_CONFIG_TO_CLIENT, packet);
 	}
 
-	@Environment(SERVER)
 	@Internal
 	@SuppressWarnings("unused")
 	public static void initializeServer() {
 	}
 
-	@Environment(CLIENT)
+
 	public static Optional<Screen> openConfigScreen(Screen parent, String modID) {
 		List<IConfigContainer> config = Stream.concat(byModIDCommon(modID).stream(), byModIDClient(modID).stream()).toList();
 		if (config.isEmpty()) return Optional.empty();
@@ -111,7 +110,7 @@ public final class ConfigManager {
 		return configs == null ? List.of() : new ArrayList<>(configs);
 	}
 
-	@Environment(CLIENT)
+
 	public static List<IConfigContainer> byModIDClient(String modID) {
 		@Nullable List<IConfigContainer> configs = CLIENT_CONFIGS.get(modID);
 
@@ -129,7 +128,7 @@ public final class ConfigManager {
 				.flatMap(Collection::stream);
 	}
 
-	@Environment(CLIENT)
+
 	public static Stream<IConfigContainer> streamClient() {
 		return CLIENT_CONFIGS.values().stream()
 				.flatMap(Collection::stream);

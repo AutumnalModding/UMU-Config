@@ -1,5 +1,7 @@
 #!/bin/sh
 
+JAVA_HOME=/lib/jvm/java-17-openjdk
+
 #
 # Copyright © 2015-2021 the original authors.
 #
