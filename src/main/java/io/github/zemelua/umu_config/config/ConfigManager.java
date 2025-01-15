@@ -7,7 +7,6 @@ import io.github.zemelua.umu_config.client.gui.ClientConfigScreen;
 import io.github.zemelua.umu_config.client.gui.ConfigsScreen;
 import io.github.zemelua.umu_config.config.container.IConfigContainer;
 import io.github.zemelua.umu_config.util.ModUtils;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -29,12 +28,11 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import static io.github.zemelua.umu_config.network.NetworkHandler.*;
-import static net.fabricmc.api.EnvType.*;
 
 public final class ConfigManager {
 	@NotNull private static ImmutableMap<String, ImmutableList<IConfigContainer>> CONFIGS = ImmutableMap.of("dummy", ImmutableList.of());
-	@Environment(CLIENT) @NotNull private static ImmutableMap<String, ImmutableList<IConfigContainer>> CLIENT_CONFIGS = ImmutableMap.of("dummy", ImmutableList.of());
-	@Environment(SERVER) @NotNull @SuppressWarnings({"unused", "FieldMayBeFinal"}) private static ImmutableMap<String, ImmutableList<IConfigContainer>> SERVER_CONFIGS = ImmutableMap.of("dummy", ImmutableList.of());
+	@NotNull private static ImmutableMap<String, ImmutableList<IConfigContainer>> CLIENT_CONFIGS = ImmutableMap.of("dummy", ImmutableList.of());
+	@NotNull @SuppressWarnings({"unused", "FieldMayBeFinal"}) private static ImmutableMap<String, ImmutableList<IConfigContainer>> SERVER_CONFIGS = ImmutableMap.of("dummy", ImmutableList.of());
 
 	@Internal
 	public static void initialize() {
